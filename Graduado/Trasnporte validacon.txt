@@ -1,0 +1,24 @@
+1- Agregar todos los periodos 
+    - periodo ingreso - Periodo Ingresos
+    - ultimo periodo  - Periodo Egresado
+     -periodo grado  - Periodo Grados
+2- Agregar periodo académico por asociación
+
+transporte
+3_GV_DP_Graduados_SAC_0001
+4_MA_DP_Graduados_SAC_001
+
+
+
+2_AM_DP_TAS_GRAD_02
+
+
+
+1- GV_3_GV_DP_Graduados_SAC_0001_0.0.1 (1.2.0).package
+2- AM_4_MA_DP_Graduados_SAC_001_0.0.1 (1.2.0).package
+3- AM_2_AM_DP_TAS_GRAD_02_0.0.1 (1.1.0).package
+4- Folder_PostgreSQL_0.0.1 (1.1.0).package
+5- Folder_Postgre_Graduados_0.0.1 (1.0.0).package
+6- Folder_Base_Graduados_0.0.1 (1.0.0).package
+7- RT_v_graduados_sac_actualizada_0.0.1 (1.0.0).package
+8- DF_2_DF_DP_V_Graduados_sac_001_0.0.1 (1.0.0).package

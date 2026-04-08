@@ -1,0 +1,11 @@
+1-quitar repetidos BD gestión comercial
+-llevar tipo evento
+        fecha evento
+	nombre empresa colegio
+	descripción
+	identificación estudiante
+	
+2-Realizar un left join al SQL View de leads, agregar la BD gestión comercial al SV Leads
+3-La gestión de colegios debe quedar como un filtro en la pestaña de centro de contacto
+4-realizar la modificación al tablero de PyC y después cambiar la fuente
+

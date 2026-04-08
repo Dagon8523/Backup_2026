@@ -1,0 +1,6 @@
+Estado	Color	RGB	HEX
+🔴 Alerta Alta	Rojo mate	RGB(236, 102, 94)	#EC665E
+🟡 Alerta Media	Amarillo mate	RGB(235, 188, 71)	#EBBC47
+🟢 Alerta Baja	Verde mate	RGB(74, 170, 132)	#4AAA84
+
+

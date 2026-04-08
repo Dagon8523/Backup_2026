@@ -1,0 +1,19 @@
+SQL VIEW Acceso torniquetes
+
+1-Tabla de hecho trabajos académicos  DS_010-Trabajo académico - vertical academico
+2-left Join con matest- llave studiantes programa periodo
+3-left join programación de eventos-llave paquete eventos(idobjetos se) y eventos(id objeto EEL) --campos : fecha de dia 
+	-hora inicio-hora final
+4-left join - bd torniquetes -llave(Date) contra fechadia (programación eventos) y id(cedula estudiante) vs programación eventos(cedula estudiante)
+5-crear campo calculado = si cruce estudiante es nullo = no asistio , lo contrario "si asistio"
+6- Output reporte SAC
+
+
+---------------------------------------------------------------------------
+
+1-    2_LT_DP_HE_DS010_01  NOMBRE TECNICO TABLA LOCAL "Trabajos académico"
+2-    3_LT_DP_MATEST_01    NOMBRE TECNICO TABLA MATRICULADOS - LLAVES ("PRGRM","YRSES","STUDNT")
+
+
+
+
