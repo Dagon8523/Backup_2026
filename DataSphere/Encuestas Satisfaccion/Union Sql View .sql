@@ -24,13 +24,8 @@ SELECT
 "ACA17" As "Satisfacción asistentes facultad",
 "ACA18" As "Probabilidad recomendar programa académico",
 "ACA19" As "Probabilidad volver a estudiar en EAN",
-"ACA20" As "Cuerpo docente con experiencia profesional",
-"Response Type" As "Response Type",
-"Start Date (UTC)" As "Start Date (UTC)",
-"Stage Date (UTC)" As "Stage Date (UTC)",
-"Submit Date (UTC)" As "Submit Date (UTC)",
-"Network ID" As "Network ID",
-"Tags" As "Tags"
+"ACA20" As "Cuerpo docente con experiencia profesional"
+
 
 FROM "01_LT_AWS_ENCUSATIS2024_02"
 UNION ALL
@@ -60,13 +55,8 @@ NULL As "Tipo_Formacion",
 "ACA18" As "Satisfacción asistentes facultad",
 "ACA29" As "Probabilidad recomendar programa académico",
 "ACA30" As "Probabilidad volver a estudiar en EAN",
- NULL As "Cuerpo docente con experiencia profesional",
- NULL As "Response Type",
-"Start Date (UTC)" As "Start Date (UTC)",
- NULL As "Stage Date (UTC)",
-"Submit Date (UTC)" As "Submit Date (UTC)",
-"Network ID" As "Network ID",
-"Tags" As "Tags"
+ NULL As "Cuerpo docente con experiencia profesional"
+
 FROM "01_LT_AWS_ENCUSATIS2023_01"
 
 UNION ALL
@@ -97,14 +87,44 @@ NULL As "Manejo tecnológico",
 "AC13" As "En general ¿Que tan satisfecho te encuentras con la atencion y el servicio recibido por parte de los asistentes de tu Facultad",
 "AC15" As "¿Que tan probable es que recomiendes tu programa academico con familiares y amigos",
 "AC16" As "¿Que tan probable es que en el futuro vuelvas a estudiar un programa academico en la Universidad Ean",
-NULL As "Cuerpo docente con experiencia profesional",
-NULL  As "Response Type",
-"Start Date UTC" As "Start Date UTC",
-NULL  As "Stage Date (UTC)",
-"Submit Date UTC" As "Submit Date UTC",
-"Network ID" As "Network ID",
-NULL  As "Tags"
+NULL As "Cuerpo docente con experiencia profesional"
+
 
 
 FROM "01_LT_AWS_ENCUSATIS2022_01"
 
+UNION ALL 
+SELECT 
+"ID_2021" As "Año",
+"CC" As "Cedula",
+"Metodologia " As "Metodologia ",
+NULL As "Facultad",
+NULL As "Tipo_Formacion",
+"Programa " As "Programa ",
+"AC1" As "Plan de estudios de tu programa",
+NULL  As "Pertinencia de los conocimientos adquiridos en las clases",
+NULL  As "Contribución del programa en tu proceso formativo",
+"AC3" As "¿Qué tan cumplida ha sido la Universidad Ean respecto a la promesa de valor académica ofrecida por el programa que cursas actualmente?",
+NULL  As "Conforme al avance de tu programa académico:",
+"AC4" As "Conocimiento disciplinar",
+"AC5" As "Competencias para la ensenanza y la formacion",
+"AC6" As "Cumplimiento del Syllabus y plan de estudios del programa",
+"AC7" As "Evaluación y acompañamiento del proceso de aprendizaje",
+"AC8" As "Entrega de calificaciones y retroalimentación",
+NULL  As "Calidad humana",
+NULL  As "Compromiso",
+NULL As "Manejo tecnológico",
+"AC9" As "Decano",
+"AC10" As "Director(a) de Programa o Coordinador",
+"AC11" As "En general ¿Que tan satisfecho te encuentras con la atencion y el servicio recibido de manera presencial y a traves de las salas teams por parte del equipo de la Unidad Academico Administrativa",
+"AC12" As "En general ¿Que tan satisfecho te encuentras con la atencion y el servicio recibido por parte de los asistentes de tu Facultad",
+"AC15" As "¿Que tan probable es que recomiendes tu programa academico con familiares y amigos",
+"AC16" As "¿Que tan probable es que en el futuro vuelvas a estudiar un programa academico en la Universidad Ean",
+NULL As "Cuerpo docente con experiencia profesional"
+
+FROM "01_LT_AWS_ENCUSATIS2021_01"
+
+
+UNION ALL 
+SELECT * 
+FROM "01_LT_AWS_ENCUSATIS2020_01"
