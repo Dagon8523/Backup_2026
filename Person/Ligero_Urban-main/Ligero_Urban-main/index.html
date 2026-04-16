@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ligero Urban</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #0F0F0F;
+      --white: #FFFFFF;
+      --indigo: #1B2A41;
+      --gray: #6B6B6B;
+      --light-gray: #F5F5F5;
+      --camel: #C49A6C;
+      --border: #E8E8E8;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      --radius: 18px;
+      --radius-sm: 12px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      color: var(--black);
+      background: var(--white);
+    }
+
+    img { max-width: 100%; display: block; }
+
+    button, input, textarea, select {
+      font: inherit;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      background: var(--black);
+      color: var(--white);
+      text-align: center;
+      padding: 10px 14px;
+      font-size: 0.9rem;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 0;
+    }
+
+    .header-side {
+      flex: 1;
+      display: flex;
+      align-items: center;
+    }
+
+    .header-side.left {
+      justify-content: flex-start;
+    }
+
+    .header-side.right {
+      justify-content: flex-end;
+    }
+
+    .brand-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-align: center;
+      min-width: 220px;
+    }
+
+    .brand-logo-large {
+      width: 143px;
+      height: 143px;
+      object-fit: contain;
+      border-radius: 50%;
+      background: var(--white);
+    }
+
+    .brand-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      letter-spacing: 0.04em;
+      line-height: 1;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .btn {
+      border: none;
+      border-radius: 999px;
+      padding: 12px 18px;
+      cursor: pointer;
+      transition: 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-weight: 600;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn-primary {
+      background: var(--indigo);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background: var(--camel);
+      color: var(--black);
+    }
+
+    .btn-outline {
+      background: var(--white);
+      color: var(--black);
+      border: 1px solid var(--border);
+    }
+
+    .btn-whatsapp {
+      background: #25D366;
+      color: #fff;
+    }
+
+    .btn-whatsapp:hover {
+      filter: brightness(0.95);
+    }
+
+    .hero {
+      padding: 40px 0 20px;
+      background: linear-gradient(180deg, #fff 0%, #fafafa 100%);
+    }
+
+    .carousel-wrap {
+      position: relative;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      background: var(--light-gray);
+    }
+
+    .carousel {
+      position: relative;
+      width: 100%;
+      height: 700px;
+    }
+
+    .carousel-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.45s ease;
+      pointer-events: none;
+    }
+
+    .carousel-slide.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .carousel-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(15,15,15,0.56) 0%, rgba(15,15,15,0.18) 45%, rgba(15,15,15,0.05) 100%);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .carousel-content {
+      position: absolute;
+      left: 48px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 3;
+      color: var(--white);
+      max-width: 520px;
+    }
+
+    .eyebrow {
+      color: #F0D2AA;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.82rem;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 4vw, 4rem);
+      line-height: 1.05;
+    }
+
+    .hero p {
+      margin: 0 0 22px;
+      color: rgba(255,255,255,0.92);
+      font-size: 1.02rem;
+      max-width: 620px;
+      line-height: 1.7;
+    }
+
+    .carousel-controls {
+      position: absolute;
+      inset: auto 20px 20px auto;
+      display: flex;
+      gap: 10px;
+      z-index: 4;
+    }
+
+    .carousel-btn {
+      width: 46px;
+      height: 46px;
+      border: none;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.92);
+      color: var(--black);
+      cursor: pointer;
+      font-size: 1.2rem;
+      font-weight: 700;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.16);
+    }
+
+    .carousel-dots {
+      position: absolute;
+      left: 50%;
+      bottom: 22px;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      z-index: 4;
+    }
+
+    .carousel-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255,255,255,0.55);
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .carousel-dot.active {
+      background: var(--camel);
+      transform: scale(1.12);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 2vw, 2.2rem);
+    }
+
+    .section-head p {
+      margin: 8px 0 0;
+      color: var(--gray);
+    }
+
+    .catalog {
+      padding: 24px 0 80px;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 22px;
+      background: var(--white);
+      padding: 14px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+    }
+
+    .search {
+      flex: 1;
+      min-width: 240px;
+      position: relative;
+    }
+
+    .search input {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: #fff;
+      outline: none;
+    }
+
+    .search input:focus,
+    .filter-select:focus,
+    .form-grid input:focus,
+    .form-grid textarea:focus {
+      border-color: var(--camel);
+      box-shadow: 0 0 0 3px rgba(196,154,108,0.16);
+    }
+
+    .filter-select {
+      min-width: 180px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: #fff;
+      outline: none;
+      
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+      transition: 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .card-image {
+      position: relative;
+      height: 320px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f5f5f5;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .card-image img {
+      max-height: 100%;
+      max-width: 100%;
+      object-fit: contain;
+    }
+
+    .card:hover .card-image img {
+      transform: scale(1.03);
+    }
+
+    .badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(255,255,255,0.92);
+      color: var(--indigo);
+      border: 1px solid var(--border);
+      padding: 8px 10px;
+      border-radius: 999px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      z-index: 2;
+    }
+
+    .card-body {
+      padding: 16px;
+    }
+
+    .card-title {
+      margin: 0 0 8px;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .card-desc {
+      margin: 0 0 12px;
+      color: var(--gray);
+      font-size: 0.92rem;
+      line-height: 1.5;
+      min-height: 42px;
+    }
+    .card-size {
+      margin: 0 0 12px;
+      color: var(--indigo);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+
+
+    .price-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .price {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--indigo);
+    }
+
+    .card-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .icon-btn {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.14);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      right: 18px;
+      z-index: 60;
+      transition: 0.25s ease;
+    }
+
+    .icon-btn:hover { transform: translateY(-2px) scale(1.03); }
+
+    .float-whatsapp {
+      bottom: 88px;
+      background: #25D366;
+      color: #fff;
+    }
+
+    .float-cart {
+      bottom: 18px;
+      background: var(--indigo);
+      color: var(--white);
+    }
+
+    .cart-count {
+      position: absolute;
+      top: -4px;
+      right: -2px;
+      min-width: 24px;
+      height: 24px;
+      padding: 0 6px;
+      border-radius: 999px;
+      background: var(--camel);
+      color: var(--black);
+      font-size: 0.78rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--white);
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(15,15,15,0.46);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      z-index: 100;
+    }
+
+    .modal.active { display: flex; }
+
+    .modal-dialog {
+      width: min(980px, 100%);
+      max-height: 92vh;
+      overflow: auto;
+      background: var(--white);
+      border-radius: 26px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.18);
+      border: 1px solid rgba(255,255,255,0.5);
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 18px 22px;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(10px);
+      z-index: 5;
+    }
+
+    .modal-title {
+      margin: 0;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+    }
+
+    .image-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+    .image-modal.active {
+      display: flex;
+    }
+
+    .image-modal-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.82);
+    }
+
+    .image-modal-content {
+      position: relative;
+      z-index: 2;
+      width: min(92vw, 1100px);
+      height: min(88vh, 900px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      cursor: zoom-in;
+    }
+
+    .image-modal-content img {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      transform: scale(1);
+      transform-origin: center center;
+      transition: transform 0.15s ease;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .image-modal-close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 42px;
+      height: 42px;
+      border: none;
+      border-radius: 50%;
+      background: #fff;
+      color: #111;
+      font-size: 1.2rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      z-index: 3;
+    }
+
+    .card-image img {
+      cursor: zoom-in;
+    }
+
+
+
+    .close-btn {
+      border: none;
+      background: var(--light-gray);
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+
+    .cart-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    .cart-side,
+    .form-side {
+      padding: 22px;
+    }
+
+    .cart-side {
+      border-right: 1px solid var(--border);
+      background: #fcfcfc;
+    }
+
+    .cart-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .cart-item {
+      display: grid;
+      grid-template-columns: 86px 1fr;
+      gap: 12px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 12px;
+    }
+
+    .cart-item img {
+      width: 86px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 14px;
+      background: var(--light-gray);
+    }
+
+    .cart-item h4 {
+      margin: 0 0 6px;
+      font-size: 0.98rem;
+    }
+
+    .cart-item p {
+      margin: 0 0 8px;
+      color: var(--gray);
+      font-size: 0.88rem;
+    }
+
+    .qty-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .qty-controls {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 10px;
+    }
+
+    .qty-controls button {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: none;
+      background: var(--light-gray);
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .item-remove {
+      border: none;
+      background: transparent;
+      color: #b63b3b;
+      cursor: pointer;
+      font-weight: 600;
+      padding: 0;
+    }
+
+    .summary {
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: 18px;
+      background: var(--white);
+      border: 1px solid var(--border);
+    }
+
+    .summary-line {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+      color: var(--gray);
+    }
+
+    .summary-total {
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 1.08rem;
+      font-weight: 800;
+      color: var(--indigo);
+    }
+
+    .form-side h3 {
+      margin: 0 0 8px;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+    }
+
+    .form-side p {
+      margin: 0 0 18px;
+      color: var(--gray);
+    }
+
+    .form-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .form-grid .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .form-grid input,
+    .form-grid textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      outline: none;
+      resize: vertical;
+      min-height: 52px;
+    }
+
+    .form-grid textarea {
+      min-height: 110px;
+    }
+
+    .helper {
+      font-size: 0.88rem;
+      color: var(--gray);
+      line-height: 1.5;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 28px 14px;
+      border: 1px dashed var(--border);
+      border-radius: 18px;
+      color: var(--gray);
+      background: var(--white);
+    }
+
+    footer {
+      background: var(--black);
+      color: rgba(255,255,255,0.9);
+      padding: 30px 0;
+      margin-top: 20px;
+    }
+
+    .footer-wrap {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .footer-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      color: var(--white);
+    }
+
+    @media (max-width: 1080px) {
+      .products-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .cart-layout { grid-template-columns: 1fr; }
+      .cart-side { border-right: none; border-bottom: 1px solid var(--border); }
+      .carousel { height: 625px; }
+      .brand-logo-large { width: 120px; height: 120px; }
+      .brand-name { font-size: 1.7rem; }
+    }
+
+    @media (max-width: 760px) {
+      .products-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .header-wrap {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 14px;
+        justify-items: center;
+      }
+      .header-side,
+      .header-side.left,
+      .header-side.right {
+        justify-content: center;
+        width: 100%;
+      }
+      .header-actions {
+        justify-content: center;
+      }
+      .btn { padding: 11px 14px; }
+      .hero { padding-top: 28px; }
+      .form-grid .two-col { grid-template-columns: 1fr; }
+      .card-actions { grid-template-columns: 1fr; }
+      .icon-btn { width: 54px; height: 54px; right: 14px; }
+      .float-whatsapp { bottom: 78px; }
+      .carousel {
+        height: 525px;
+      }
+      .carousel-content {
+        left: 24px;
+        right: 24px;
+        max-width: none;
+      }
+      .brand-logo-large {
+        width: 109px;
+        height: 109px;
+      }
+      .brand-name {
+        font-size: 1.55rem;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .products-grid { grid-template-columns: 1fr; }
+      .section-head { flex-direction: column; align-items: start; }
+      .toolbar { padding: 12px; }
+      .modal-dialog { border-radius: 18px; }
+      .cart-item { grid-template-columns: 1fr; }
+      .cart-item img { width: 100%; height: 220px; }
+      .carousel {
+        height: 475px;
+      }
+      .carousel-content {
+        left: 18px;
+        right: 18px;
+        top: auto;
+        bottom: 62px;
+        transform: none;
+      }
+      .carousel-controls {
+        right: 14px;
+        bottom: 14px;
+      }
+      .carousel-dots {
+        bottom: 18px;
+      }
+      .brand-logo-large {
+        width: 99px;
+        height: 99px;
+      }
+      .brand-name {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">Jeans premium con estilo urbano. Compra fácil y atención directa por WhatsApp.</div>
+
+  <header>
+    <div class="container header-wrap">
+      <div class="header-side left"></div>
+
+      <a href="#inicio" class="brand-center" aria-label="Ligero Urban inicio">
+        <img class="brand-logo-large" src="Logo.jpg.jpeg" alt="Logo Ligero Urban" />
+        <div class="brand-name">Ligero Urban</div>
+      </a>
+
+      <div class="header-side right">
+        <div class="header-actions">
+          <a class="btn btn-outline" href="#catalogo">Ver Catalogo</a>
+          <button class="btn btn-primary" type="button" onclick="openCart()">Abrir carrito</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container">
+        <div class="carousel-wrap">
+          <div class="carousel" id="promoCarousel">
+            <div class="carousel-overlay"></div>
+
+            <div class="carousel-slide active">
+              <img src="Imagenes\Jeans\CARR002.JPG" alt="Promoción Ligero Urban 1">
+            </div>
+            <div class="carousel-slide">
+              <img src="Imagenes\Jeans\CARR003.JPG" alt="Promoción Ligero Urban 2">
+            </div>
+            <div class="carousel-slide">
+              <img src="Imagenes\Jeans\CARR004.JPG" alt="Promoción Ligero Urban 3">
+            </div>
+            <div class="carousel-slide">
+              <img src="Imagenes\Jeans\CARR001.JPG" alt="Promoción Ligero Urban 4">
+            </div>
+            <div class="carousel-slide">
+              <img src="Imagenes\Jeans\CARR005.JPG" alt="Promoción Ligero Urban 5">
+            </div>
+            <div class="carousel-slide">
+              <img src="Imagenes\Jeans\CARR006.JPG" alt="Promoción Ligero Urban 6">
+            </div>
+
+            <div class="carousel-content">
+              <div class="eyebrow">Accesorios premium · compra sencilla</div>
+              <h1>Jeans con estilo urbano, camisetas , accesorios</h1>
+            
+              <div style="display:flex; gap:12px; flex-wrap:wrap;">
+                <a class="btn btn-primary" href="#catalogo">Explorar colección</a>
+                <a class="btn btn-whatsapp" id="heroWhatsappLink" target="_blank" rel="noopener">Hablar por WhatsApp</a>
+              </div>
+            </div>
+
+            <div class="carousel-controls">
+              <button class="carousel-btn" type="button" id="prevSlide" aria-label="Anterior">‹</button>
+              <button class="carousel-btn" type="button" id="nextSlide" aria-label="Siguiente">›</button>
+            </div>
+
+            <div class="carousel-dots" id="carouselDots"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="catalog" id="catalogo">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Nuestra colección</h2>
+            <p>  En Ligero Urban queremos que encontrar tu estilo ideal. Explora nuestros modelos,
+                agrégalos al carrito o escríbenos por WhatsApp para recibir atención personalizada.</p>
+          </div>
+        </div>
+
+        <div class="toolbar">
+          <div class="search">
+            <input type="text" id="searchInput" placeholder="Buscar articulo por nombre o color " />
+          </div>
+          <select class="filter-select" id="categoryFilter">
+            <option value="all">Todos los productos</option>
+            <option value="jeans">Jeans</option>
+            <option value="camisetas">Camisetas</option>
+            <option value="accesorios">Accesorios</option>
+          </select>
+        </div>
+
+        <div class="products-grid" id="productsGrid"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-wrap">
+      <div>
+        <div class="footer-brand">Ligero Urban</div>
+        <div style="margin-top:8px; color:rgba(255,255,255,0.72);">Moda  urbana con una experiencia de estilo y sencilla.</div>
+      </div>
+      <div style="color:rgba(255,255,255,0.72);">© 2026 Ligero Urban · Bogotá, Colombia</div>
+    </div>
+  </footer>
+
+  <a class="icon-btn float-whatsapp" id="floatingWhatsapp" href="#" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg width="24" height="24" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
+      <path d="M19.11 17.23c-.27-.14-1.58-.78-1.82-.87-.24-.09-.42-.14-.6.14-.18.27-.69.87-.85 1.05-.16.18-.31.2-.58.07-.27-.14-1.13-.41-2.16-1.3-.8-.71-1.35-1.58-1.51-1.85-.16-.27-.02-.42.12-.56.13-.13.27-.31.4-.47.13-.16.18-.27.27-.45.09-.18.04-.34-.02-.47-.07-.14-.6-1.45-.82-1.98-.22-.53-.44-.45-.6-.46h-.51c-.18 0-.47.07-.71.34-.24.27-.93.91-.93 2.22s.95 2.58 1.08 2.76c.13.18 1.86 2.84 4.52 3.98.63.27 1.13.43 1.52.55.64.2 1.22.17 1.68.1.51-.08 1.58-.65 1.8-1.27.22-.62.22-1.16.16-1.27-.07-.11-.24-.18-.51-.31z"/>
+      <path d="M16 3C8.83 3 3 8.83 3 16c0 2.29.6 4.53 1.74 6.5L3 29l6.69-1.73A12.93 12.93 0 0 0 16 29c7.17 0 13-5.83 13-13S23.17 3 16 3zm0 23.67c-1.97 0-3.9-.52-5.6-1.5l-.4-.23-3.97 1.03 1.06-3.87-.26-.4A10.65 10.65 0 1 1 16 26.67z"/>
+    </svg>
+  </a>
+
+  <button class="icon-btn float-cart" type="button" onclick="openCart()" aria-label="Abrir carrito">
+    <span class="cart-count" id="floatingCartCount">0</span>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <circle cx="9" cy="20" r="1"></circle>
+      <circle cx="18" cy="20" r="1"></circle>
+      <path d="M1 1h4l2.68 12.39a2 2 0 0 0 2 1.61h7.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+    </svg>
+  </button>
+
+  <div class="modal" id="cartModal" aria-hidden="true">
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
+      <div class="modal-header">
+        <h2 class="modal-title" id="cartTitle">Tu carrito</h2>
+        <button class="close-btn" type="button" onclick="closeCart()" aria-label="Cerrar">✕</button>
+      </div>
+
+      <div class="cart-layout">
+        <div class="cart-side">
+          <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+            <strong>Productos agregados: <span id="cartItemsCount">0</span></strong>
+            <span style="color:var(--gray);">Revisa cantidades antes de enviar</span>
+          </div>
+
+          <div class="cart-list" id="cartList"></div>
+
+          <div class="summary">
+            <div class="summary-line">
+              <span>Total de unidades</span>
+              <strong id="summaryUnits">0</strong>
+            </div>
+            <div class="summary-total">
+              <span>Total pedido</span>
+              <span id="summaryTotal">$0</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-side">
+          <h3>Datos de envío</h3>
+          <p>Completa el formulario y enviaremos tu pedido directamente al WhatsApp del negocio.</p>
+
+          <form id="checkoutForm" class="form-grid">
+            <div class="two-col">
+              <input type="text" id="firstName" placeholder="Nombre" required />
+              <input type="text" id="lastName" placeholder="Apellidos" required />
+            </div>
+            <input type="text" id="address" placeholder="Dirección de envío" required />
+            <input type="text" id="city" placeholder="Ciudad" required />
+            <div class="two-col">
+              <input type="tel" id="phone" placeholder="Teléfono" required />
+              <input type="email" id="email" placeholder="Correo electrónico" required />
+            </div>
+            <textarea id="notes" placeholder="Observaciones del pedido (talla, color, referencia, indicaciones, etc.)"></textarea>
+
+            <div class="helper">
+              Al enviar, se abrirá WhatsApp con un mensaje listo para mandar, incluyendo productos, cantidades y datos de envío.
+            </div>
+
+            <button type="submit" class="btn btn-whatsapp">Enviar pedido por WhatsApp</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="image-modal" id="imageModal" aria-hidden="true">
+  <div class="image-modal-overlay" onclick="closeImageModal()"></div>
+  <div class="image-modal-content">
+    <button class="image-modal-close" type="button" onclick="closeImageModal()" aria-label="Cerrar imagen">✕</button>
+    <img id="modalProductImage" src="" alt="Vista ampliada del producto" />
+  </div>
+</div>
+
+  <script>
+    const WHATSAPP_NUMBER = '573057896246'; // REEMPLAZA ESTE NÚMERO POR EL DE LA TIENDA
+
+    const promoImages = [
+      'https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=1400&q=80',
+      'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1400&q=80',
+      'https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1400&q=80',
+      'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=1400&q=80',
+      'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1400&q=80',
+      'https://images.unsplash.com/photo-1495385794356-15371f348c31?auto=format&fit=crop&w=1400&q=80'
+    ];
+
+    const products = [
+            { id: 1, name: 'Jean Urban Slim Azul Oscuro', price: 129900, size: '36', category: 'jeans', image: "Imagenes/Jeans/DSC03925.JPG", desc: 'Corte slim, denim premium y ajuste cómodo para uso diario.' },
+            { id: 2, name: 'Jean Regular Indigo Clásico', price: 9900, size: '30', category: 'jeans', image: "Imagenes/Jeans/DSC03926.JPG", desc: 'Corte slim, denim premium y ajuste cómodo para uso diario.' },
+               { id: 38, name: 'Camiseta Selección Colombia', price: 99000, size: 'S', category: 'camisetas', image: "Imagenes/Camisetas/COLO_001.jpg", desc: 'Camiseta Selección Colombia 2024-2025 local amarilla versión jugador' },
+            { id: 39, name: 'Camiseta Selección Colombia', price: 99000, size: 'M', category: 'camisetas', image: "Imagenes/Camisetas/COLO_002.jpg", desc: 'Camiseta Selección Colombia 2024-2025 local amarilla versión jugador' },
+            { id: 40, name: 'Camiseta Selección Colombia', price: 99000, size: 'L', category: 'camisetas', image: "Imagenes/Camisetas/COLO_003.jpg", desc: 'Camiseta Selección Colombia Caballero Negra AAA 1.1 Tallas S-M-L-XL Full Calidad ' },
+            { id: 3, name: 'Jean Mom Fit Light Blue', price: 129900, size: '32', category: 'jeans', image: "Imagenes/Jeans/DSC03927.JPG", desc: 'Corte slim, denim premium y ajuste cómodo para uso diario.' },
+            { id: 41, name: 'Set X 4 Boxer Multicolor Calvin Klein', price: 150000, size: 'L', category: 'accesorios', image: "Imagenes/Accesorios/BOX_001.webp", desc: 'Set X 4 Boxer Multicolor Calvin Klein' },
+            { id: 42, name: 'Set X 4 Boxer Multicolor Calvin Klein', price: 150000, size: 'XL', category: 'accesorios', image: "Imagenes/Accesorios/BOX_002.webp", desc: 'Set X 4 Boxer Multicolor Calvin Klein' },
+            { id: 43, name: 'Set X 4 Boxer Multicolor Calvin Klein', price: 150000, size: 'M', category: 'accesorios', image: "Imagenes/Accesorios/BOX_003.jpg", desc: 'Set X 4 Boxer Multicolor Calvin Klein' },
+            { id: 44, name: 'Nike Gorra Structured Trucker Cap ', price: 150000, size: 'XL', category: 'accesorios', image: "Imagenes/Accesorios/GORRA_001.avif", desc: 'Gorra Sin Estructura Nike Dri-Fit Club Featherlight' },
+            { id: 45, name: 'Nike Gorra Structured Trucker Cap ', price: 150000, size: 'L', category: 'accesorios', image: "Imagenes/Accesorios/GORRA_002.jpg", desc: 'Gorra Sin Estructura Nike Dri-Fit Club Featherlight' },
+            { id: 46, name: 'Nike Gorra Structured Trucker Cap ', price: 150000, size: 'M', category: 'accesorios', image: "Imagenes/Accesorios/GORRA_003.jpg", desc: 'Gorra Sin Estructura Nike Dri-Fit Club Featherlight' },
+            { id: 4, name: 'Jean Skinny Negro Premium', price: 229900, size: '32', category: 'jeans', image: "Imagenes/Jeans/DSC03928.JPG", desc: 'Corte slim, denim premium y ajuste cómodo para uso diario.' },
+            { id: 5, name: 'Jean Cargo Urban Gray', price: 229900, size: '32', category: 'jeans', image: "Imagenes/Jeans/DSC03929.JPG", desc: 'Corte slim, denim premium y ajuste cómodo para uso diario.' },
+            { id: 6, name: 'Jean Slim Blue Vintage', price: 109900, size: '32', category: 'jeans', image: "Imagenes/Jeans/DSC03932.JPG", desc: 'Corte slim, denim premium y ajuste cómodo para uso diario.' },
+            { id: 7, name: 'Jean Regular Black Stone', price: 129900, size: '34', category: 'jeans', image: "Imagenes/Jeans/DSC03935.JPG", desc: 'Corte slim, denim premium y ajuste cómodo para uso diario.' },
+            { id: 8, name: 'Jean Mom Fit Indigo Soft', price: 119900, size: '32', category: 'jeans', image: "Imagenes/Jeans/DSC03936.JPG", desc: 'Corte slim, denim premium y ajuste cómodo para uso diario.' },
+            { id: 9, name: 'Jean Skinny Azul Medio', price: 129900, size: '30', category: 'jeans', image: "Imagenes/Jeans/DSC03938.JPG", desc: 'Corte slim, denim premium y ajuste cómodo para uso diario.' },
+            { id: 10, name: 'Jean Cargo Beige Urban', price: 129900, size: '36', category: 'jeans', image: "Imagenes/Jeans/DSC03939.JPG", desc: 'Corte slim, denim premium y ajuste cómodo para uso diario.' },
+            { id: 11, name: 'Jean Slim Indigo Night', price: 129900, size: '32', category: 'jeans', image: "Imagenes/Jeans/DSC03940.JPG", desc: 'Corte slim, denim premium y ajuste cómodo para uso diario.' },
+            { id: 12, name: 'Jean Regular Denim Classic', price: 129900, size: '30', category: 'jeans', image: "Imagenes/Jeans/DSC03941.JPG", desc: 'Corte slim, denim premium y ajuste cómodo para uso diario.' },
+            { id: 13, name: 'Jean Urban Slim Azul Oscuro', price: 129900, size: '34', category: 'jeans', image: "Imagenes/Jeans/DSC03942.JPG", desc: 'Corte slim, denim premium y ajuste cómodo para uso diario.' },
+            { id: 14, name: 'Jean Skinny Negro Premium', price: 129900, size: '34', category: 'jeans', image: "Imagenes/Jeans/DSC03928.JPG", desc: 'Corte slim, denim premium y ajuste cómodo para uso diario.' },
+            { id: 15, name: 'Jean Cargo Urban Gray',  price: 129900, size: '36', category: 'jeans', image: "Imagenes/Jeans/DSC03943.JPG", desc: 'Corte slim, denim premium y ajuste cómodo para uso diario.' },
+            { id: 15, name: 'Jean Urban Slim Azul Oscuro', price: 129900, size: '32', category: 'jeans', image: "Imagenes/Jeans/DSC03944.JPG", desc: 'Corte slim, denim premium y ajuste cómodo para uso diario.' },
+            { id: 16, name: 'Jean Urban Slim Azul Oscuro', price: 129900, size: '30', category: 'jeans', image: "Imagenes/Jeans/DSC03945.JPG", desc: 'Corte slim, denim premium y ajuste cómodo para uso diario.' },
+            { id: 17, name: 'Jean Skinny Negro Premium', price: 129900, size: '36', category: 'jeans', image: "Imagenes/Jeans/DSC03928.JPG", desc: 'Corte slim, denim premium y ajuste cómodo para uso diario.' },
+            { id: 18, name: 'Jean Urban Slim Azul Oscuro', price: 129900, size: '34', category: 'jeans', image: "Imagenes/Jeans/DSC03950.JPG", desc: 'Corte slim, denim premium y ajuste cómodo para uso diario.' },
+            { id: 19, name: 'Jean Cargo Beige Urban', price: 129900, size: '30', category: 'jeans', image: "Imagenes/Jeans/DSC03951.JPG", desc: 'Corte slim, denim premium y ajuste cómodo para uso diario.' },
+            { id: 20, name: 'Jean Urban Slim Azul Oscuro', price: 129900, size: '36', category: 'jeans', image: "Imagenes/Jeans/DSC03954.JPG", desc: 'Corte slim, denim premium y ajuste cómodo para uso diario.' },
+            { id: 21, name: 'Jean Regular Black Stone', price: 129900, size: '32', category: 'jeans', image: "Imagenes/Jeans/DSC03959.JPG", desc: 'Corte slim, denim premium y ajuste cómodo para uso diario.' },
+            { id: 22, name: 'Jean Urban Slim Azul Oscuro', price: 129900, size: '34', category: 'jeans', image: "Imagenes/Jeans/DSC03960.JPG", desc: 'Corte slim, denim premium y ajuste cómodo para uso diario.' },
+            { id: 23, name: 'Jean Cargo Beige Urban', price: 129900, size: '36', category: 'jeans', image: "Imagenes/Jeans/DSC03962.JPG", desc: 'Corte slim, denim premium y ajuste cómodo para uso diario.' },
+            { id: 24, name: 'Jean Urban Slim Azul Oscuro', price: 129900, size: '36', category: 'jeans', image: "Imagenes/Jeans/DSC03964.JPG", desc: 'Corte slim, denim premium y ajuste cómodo para uso diario.' },
+            { id: 25, name: 'Jean Skinny Negro Premium', price: 129900, size: '32', category: 'jeans', image: "Imagenes/Jeans/DSC03980.JPG", desc: 'Corte slim, denim premium y ajuste cómodo para uso diario.' },
+            { id: 26, name: 'Jean Urban Slim Azul Oscuro', price: 129900, size: '34', category: 'jeans', image: "Imagenes/Jeans/DSC03982.JPG", desc: 'Corte slim, denim premium y ajuste cómodo para uso diario.' },
+            { id: 27, name: 'Jean Cargo Beige Urban', price: 129900, size: '36', category: 'jeans', image: "Imagenes/Jeans/DSC03984.JPG", desc: 'Corte slim, denim premium y ajuste cómodo para uso diario.' },
+            { id: 28, name: 'Jean Urban Slim Azul Oscuro', price: 129900, size: '30', category: 'jeans', image: "Imagenes/Jeans/DSC03986.JPG", desc: 'Corte slim, denim premium y ajuste cómodo para uso diario.' },
+            { id: 29, name: 'Jean Regular Black Stone', price: 129900, size: '34', category: 'jeans', image: "Imagenes/Jeans/DSC03988.JPG", desc: 'Corte slim, denim premium y ajuste cómodo para uso diario.' },
+            { id: 30, name: 'Jean Urban Slim Azul Oscuro', price: 129900, size: '36', category: 'jeans', image: "Imagenes/Jeans/DSC03989.JPG", desc: 'Corte slim, denim premium y ajuste cómodo para uso diario.' },
+            { id: 31, name: 'Jean Regular Black Stone', price: 129900, size: '30', category: 'jeans', image: "Imagenes/Jeans/DSC03993.JPG", desc: 'Corte slim, denim premium y ajuste cómodo para uso diario.' },
+            { id: 32, name: 'Jean Skinny Negro Premium', price: 129900, size: '32', category: 'jeans', image: "Imagenes/Jeans/DSC03994.JPG", desc: 'Corte slim, denim premium y ajuste cómodo para uso diario.' },
+            { id: 33, name: 'Jean Urban Slim Azul Oscuro', price: 129900, size: '36', category: 'jeans', image: "Imagenes/Jeans/DSC04003.JPG", desc: 'Corte slim, denim premium y ajuste cómodo para uso diario.' },
+            { id: 34, name: 'Jean Regular Black Stone', price: 129900, size: '34', category: 'jeans', image: "Imagenes/Jeans/DSC04007.JPG", desc: 'Corte slim, denim premium y ajuste cómodo para uso diario.' },
+            { id: 35, name: 'Jean Urban Slim Azul Oscuro', price: 129900, size: '30', category: 'jeans', image: "Imagenes/Jeans/DSC04011.JPG", desc: 'Corte slim, denim premium y ajuste cómodo para uso diario.' },
+            { id: 36, name: 'Jean Urban Slim Azul Oscuro', price: 129900, size: '32', category: 'jeans', image: "Imagenes/Jeans/DSC04013.JPG", desc: 'Corte slim, denim premium y ajuste cómodo para uso diario.' },
+            { id: 37, name: 'Jean Cargo Urban Gray', price: 129900, size: '30', category: 'jeans', image: "Imagenes/Jeans/DSC04022.JPG", desc: 'Corte slim, denim premium y ajuste cómodo para uso diario.' }
+         
+            
+
+
+      
+
+    ];
+
+    const cart = [];
+    const productsGrid = document.getElementById('productsGrid');
+    const cartModal = document.getElementById('cartModal');
+    const cartList = document.getElementById('cartList');
+    const cartItemsCount = document.getElementById('cartItemsCount');
+    const floatingCartCount = document.getElementById('floatingCartCount');
+    const summaryUnits = document.getElementById('summaryUnits');
+    const summaryTotal = document.getElementById('summaryTotal');
+    const searchInput = document.getElementById('searchInput');
+    const categoryFilter = document.getElementById('categoryFilter');
+    const checkoutForm = document.getElementById('checkoutForm');
+    const floatingWhatsapp = document.getElementById('floatingWhatsapp');
+    const heroWhatsappLink = document.getElementById('heroWhatsappLink');
+    const imageModal = document.getElementById('imageModal');
+    const modalProductImage = document.getElementById('modalProductImage'); 
+    let scale = 1;
+    const minScale = 1;
+    const maxScale = 3;
+
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dotsContainer = document.getElementById('carouselDots');
+    const prevSlideBtn = document.getElementById('prevSlide');
+    const nextSlideBtn = document.getElementById('nextSlide');
+    let currentSlide = 0;
+    let carouselInterval;
+
+    function formatCOP(value) {
+      return new Intl.NumberFormat('es-CO', {
+        style: 'currency',
+        currency: 'COP',
+        maximumFractionDigits: 0
+      }).format(value);
+    }
+
+    function baseWhatsappMessage() {
+      return encodeURIComponent('Hola, quiero recibir información sobre los jeans de Ligero Urban.');
+    }
+
+    function setWhatsappLinks() {
+      const link = `https://wa.me/${WHATSAPP_NUMBER}?text=${baseWhatsappMessage()}`;
+      floatingWhatsapp.href = link;
+      heroWhatsappLink.href = link;
+    }
+    function openImageModal(imageSrc, imageAlt) {
+      modalProductImage.src = imageSrc;
+      modalProductImage.alt = imageAlt || 'Vista ampliada del producto';
+        scale = 1;
+        modalProductImage.style.transform = `scale(${scale})`;
+
+        imageModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeImageModal() {
+      imageModal.classList.remove('active');
+      modalProductImage.src = '';
+      document.body.style.overflow = '';
+      scale = 1;
+    }
+    
+    
+
+    function renderProducts() {
+      const searchTerm = searchInput.value.trim().toLowerCase();
+      const category = categoryFilter.value;
+
+      const filtered = products.filter(product => {
+        const matchesName = product.name.toLowerCase().includes(searchTerm);
+        const matchesCategory = category === 'all' || product.category === category;
+        return matchesName && matchesCategory;
+      });
+
+      productsGrid.innerHTML = filtered.map(product => {
+        const whatsappText = encodeURIComponent(`Hola, estoy interesado en este producto de Ligero Urban:\n\n*${product.name}*\nPrecio: ${formatCOP(product.price)}`);
+        return `
+          <article class="card">
+            <div class="card-image">
+              <span class="badge">${product.category}</span>
+              <img src="${product.image}" alt="${product.name}" loading="lazy" onclick="openImageModal('${product.image}', '${product.name}')">
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">${product.name}</h3>
+              <p class="card-desc">${product.desc}</p>
+              <p class="card-size"><strong>Talla:</strong> ${product.size}</p>
+              <div class="price-row">
+                <div class="price">${formatCOP(product.price)}</div>
+              </div>
+              <div class="card-actions">
+                <a class="btn btn-whatsapp" target="_blank" rel="noopener" href="https://wa.me/${WHATSAPP_NUMBER}?text=${whatsappText}">WhatsApp</a>
+                <button class="btn btn-primary" type="button" onclick="addToCart(${product.id})">Agregar</button>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join('');
+
+      if (!filtered.length) {
+        productsGrid.innerHTML = '<div class="empty-state" style="grid-column:1 / -1;">No encontramos productos con esa búsqueda. Intenta con otro nombre o categoría.</div>';
+      }
+    }
+
+    function addToCart(productId) {
+      const found = cart.find(item => item.id === productId);
+      if (found) {
+        found.quantity += 1;
+      } else {
+        const product = products.find(p => p.id === productId);
+        cart.push({ ...product, quantity: 1 });
+      }
+      renderCart();
+    }
+
+    function changeQuantity(productId, delta) {
+      const item = cart.find(p => p.id === productId);
+      if (!item) return;
+      item.quantity += delta;
+      if (item.quantity <= 0) {
+        removeItem(productId);
+      }
+      renderCart();
+    }
+
+    function removeItem(productId) {
+      const index = cart.findIndex(item => item.id === productId);
+      if (index > -1) cart.splice(index, 1);
+      renderCart();
+    }
+
+    function getCartTotals() {
+      const units = cart.reduce((acc, item) => acc + item.quantity, 0);
+      const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+      return { units, total };
+    }
+
+    function renderCart() {
+      const { units, total } = getCartTotals();
+
+      cartItemsCount.textContent = units;
+      floatingCartCount.textContent = units;
+      summaryUnits.textContent = units;
+      summaryTotal.textContent = formatCOP(total);
+
+      if (!cart.length) {
+        cartList.innerHTML = '<div class="empty-state">Tu carrito está vacío. Agrega uno o varios jeans para continuar.</div>';
+        return;
+      }
+
+      cartList.innerHTML = cart.map(item => `
+        <div class="cart-item">
+          <img src="${item.image}" alt="${item.name}">
+          <div>
+            <h4>${item.name}</h4>
+            <p>${formatCOP(item.price)} · ${item.category}</p>
+            <div class="qty-row">
+              <div class="qty-controls">
+                <button type="button" onclick="changeQuantity(${item.id}, -1)">−</button>
+                <strong>${item.quantity}</strong>
+                <button type="button" onclick="changeQuantity(${item.id}, 1)">+</button>
+              </div>
+              <strong>${formatCOP(item.price * item.quantity)}</strong>
+            </div>
+            <div style="margin-top:10px;">
+              <button class="item-remove" type="button" onclick="removeItem(${item.id})">Quitar producto</button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function openCart() {
+      cartModal.classList.add('active');
+      cartModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeCart() {
+      cartModal.classList.remove('active');
+      cartModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    cartModal.addEventListener('click', (e) => {
+      if (e.target === cartModal) closeCart();
+    });
+
+    imageModal.addEventListener('wheel', (e) => {
+      if (!imageModal.classList.contains('active')) return;
+
+      e.preventDefault();
+
+      if (e.deltaY < 0) {
+        scale += 0.15;
+      } else {
+        scale -= 0.15;
+      }
+
+      scale = Math.min(Math.max(scale, minScale), maxScale);
+      modalProductImage.style.transform = `scale(${scale})`;
+    }, { passive: false });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeCart();
+        closeImageModal();
+      }
+    });
+
+    searchInput.addEventListener('input', renderProducts);
+    categoryFilter.addEventListener('change', renderProducts);
+
+    checkoutForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      if (!cart.length) {
+        alert('Agrega al menos un producto al carrito antes de enviar el pedido.');
+        return;
+      }
+
+
+
+      const firstName = document.getElementById('firstName').value.trim();
+      const lastName = document.getElementById('lastName').value.trim();
+      const address = document.getElementById('address').value.trim();
+      const city = document.getElementById('city').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const notes = document.getElementById('notes').value.trim();
+
+      const { units, total } = getCartTotals();
+
+      const productLines = cart.map((item, index) => {
+        return `${index + 1}. ${item.name}%0A   Cantidad: ${item.quantity}%0A   Valor unitario: ${formatCOP(item.price)}%0A   Subtotal: ${formatCOP(item.price * item.quantity)}`;
+      }).join('%0A%0A');
+
+      const message = `Hola, quiero realizar este pedido en *Ligero Urban*:%0A%0A*PRODUCTOS*%0A${productLines}%0A%0A*RESUMEN*%0AUnidades: ${units}%0ATotal: ${formatCOP(total)}%0A%0A*DATOS DE ENVÍO*%0ANombre: ${firstName} ${lastName}%0ADirección: ${address}%0ACiudad: ${city}%0ATeléfono: ${phone}%0ACorreo: ${email}%0AObservaciones: ${notes || 'Ninguna'}`;
+
+      const whatsappURL = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
+      window.open(whatsappURL, '_blank');
+    });
+
+    function createDots() {
+      slides.forEach((_, index) => {
+        const dot = document.createElement('button');
+        dot.className = `carousel-dot ${index === 0 ? 'active' : ''}`;
+        dot.type = 'button';
+        dot.setAttribute('aria-label', `Ir a la imagen ${index + 1}`);
+        dot.addEventListener('click', () => goToSlide(index));
+        dotsContainer.appendChild(dot);
+      });
+    }
+
+    function updateCarousel() {
+      const dots = document.querySelectorAll('.carousel-dot');
+      slides.forEach((slide, index) => {
+        slide.classList.toggle('active', index === currentSlide);
+      });
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentSlide);
+      });
+    }
+
+    function goToSlide(index) {
+      currentSlide = index;
+      updateCarousel();
+      restartCarousel();
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      updateCarousel();
+    }
+
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      updateCarousel();
+    }
+
+    function startCarousel() {
+      carouselInterval = setInterval(nextSlide, 4000);
+    }
+
+    function restartCarousel() {
+      clearInterval(carouselInterval);
+      startCarousel();
+    }
+
+    prevSlideBtn.addEventListener('click', () => {
+      prevSlide();
+      restartCarousel();
+    });
+
+    nextSlideBtn.addEventListener('click', () => {
+      nextSlide();
+      restartCarousel();
+    });
+
+    createDots();
+    setWhatsappLinks();
+    renderProducts();
+    renderCart();
+    startCarousel();
+  </script>
+</body>
+</html>
