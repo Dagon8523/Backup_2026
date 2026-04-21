@@ -1,0 +1,6 @@
+1- en el tablero de P y C  agregar pestaña oculta para empezar desarrollo del tablero
+2- agregar 4 pestañas por cada red socia
+3- link power bi:  
+
+      https://app.powerbi.com/groups/me/reports/ee42a209-8a5a-4c4b-ac6f-25a2d15b6b6b/365bca033190af53c560?ctid=c06fb559-1b68-4b84-a14f-47d0d837a5ab&experience=power-bi
+

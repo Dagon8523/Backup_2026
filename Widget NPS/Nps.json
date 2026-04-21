@@ -1,0 +1,39 @@
+{
+  "name": "SurveyWidget",
+  "id": "com.ean.surveywidget",
+  "newInstancePrefix": "SurveyWidget_",
+  "version": "1.0.0",
+  "description": "Widget de encuestas NPS y Likert",
+  "ignoreIntegrity": true,
+  "webcomponents": [
+    {
+      "kind": "main",
+      "tag": "survey-widget",
+      "url": "/widget.js"
+    }
+  ],
+  "properties": {
+    "data": {
+      "type": "string",
+      "defaultValue": "[1,2,3,4,5]"
+    },
+    "titulo": {
+      "type": "string",
+      "defaultValue": "Resultados Encuesta"
+    },
+    "escala": {
+      "type": "string",
+      "defaultValue": "1-5"
+    },
+    "mostrarTTB": {
+      "type": "boolean",
+      "defaultValue": true
+    },
+    "mostrarNPS": {
+      "type": "boolean",
+      "defaultValue": false
+    }
+  },
+  "methods": {},
+  "events": {}
+}
