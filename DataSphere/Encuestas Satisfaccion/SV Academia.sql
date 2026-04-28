@@ -1,10 +1,8 @@
 SELECT
     BASE."Año"               AS "Año",
-    BASE."Modalidad"         AS "Modalidad",
-    BASE."Facultad"          AS "Facultad",
-    BASE."Tipo_Formacion"    AS "Tipo_Formacion",
     BASE."Programa"          AS "Programa",
 	BASE."Documento_identidad" AS "Documento_identidad",
+	BASE."Facultad" ,
 
     COUNT(*) AS "Registros_Totales",
 
@@ -432,20 +430,16 @@ FROM
 
 GROUP BY
     BASE."Año",
-    BASE."Modalidad",
-    BASE."Facultad",
-    BASE."Tipo_Formacion",
     BASE."Programa",
     BASE."ACA5",
     BASE."ACA20",
-	BASE."Documento_identidad"
+	BASE."Documento_identidad",
+	BASE."Facultad"
 
 ORDER BY
     BASE."Año",
-    BASE."Modalidad",
-    BASE."Facultad",
-    BASE."Tipo_Formacion",
     BASE."Programa",
     BASE."ACA5",
     BASE."ACA20",
-	BASE."Documento_identidad"
+	BASE."Documento_identidad",
+	BASE."Facultad"

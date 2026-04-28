@@ -1,0 +1,5 @@
+1- Muy Insatisfecho
+2- Insatisfecho
+3- Neutral
+4- Satisfecho
+5- Muy insatisfecho

@@ -1,0 +1,91 @@
+──────────────────────────────────────
+CONTEXTO DE LA SOLICITUD
+──────────────────────────────────────
+
+Durante el espacio de trabajo del jueves, revisamos en detalle la necesidad de construir un dashboard de medición de contenido orgánico digital, con un alcance similar al tablero desarrollado en el BI orgánico durante 2025. El objetivo es centralizar en un solo lugar los indicadores clave de desempeño (KPIs) de las redes sociales institucionales de la Universidad EAN.
+
+──────────────────────────────────────
+KPIs ACORDADOS PARA EL TABLERO
+──────────────────────────────────────
+
+Los indicadores que debe incluir el dashboard son los siguientes, aplicables a las plataformas: Facebook, Instagram, TikTok, YouTube, LinkedIn y X (Twitter).
+
+1. ALCANCE E IMPRESIONES
+   • Alcance (Reach): número de cuentas únicas que vieron al menos una vez una publicación.
+   • Impresiones: número total de veces que el contenido fue mostrado (incluye repeticiones por el mismo usuario).
+   → Fórmula de referencia: Tasa de alcance = (Alcance / Total de seguidores) × 100
+
+2. CRECIMIENTO DE SEGUIDORES
+   • Nuevos seguidores ganados en el período.
+   • Seguidores perdidos (unfollows).
+   • Seguidores netos = Nuevos seguidores − Seguidores perdidos
+   → Fórmula: Tasa de crecimiento = (Seguidores netos / Seguidores al inicio del período) × 100
+
+3. VISTAS / REPRODUCCIONES
+   • Total de reproducciones de videos y Reels por red social.
+   • En YouTube: vistas totales + horas de reproducción (Watch Time).
+   • En TikTok: vistas de video + reproducciones completas.
+
+4. TASA DE RETENCIÓN EN VIDEO
+   Aplica principalmente a Instagram, Facebook, TikTok y YouTube.
+   → Fórmula: Tasa de retención = (Tiempo promedio de visualización / Duración total del video) × 100
+   • Un resultado ≥ 50% se considera óptimo en plataformas de video corto.
+   • En YouTube, la retención promedio aceptable oscila entre el 40% y 60%.
+
+5. CLICS Y TRÁFICO GENERADO
+   Este KPI mide la capacidad del contenido orgánico para llevar audiencia hacia destinos estratégicos (sitio web, landing pages, formularios de inscripción, etc.).
+
+   • Clics en enlace por publicación (Link Clicks).
+   • Clics en el perfil / bio (profile visits).
+   • Visitantes derivados desde redes sociales al sitio web institucional (medible vía Google Analytics 4 o similar, filtrando tráfico de fuente social).
+   → Tasa de clics (CTR) = (Total de clics / Impresiones totales) × 100
+   
+Nota: Este indicador es especialmente relevante en LinkedIn y Facebook para campañas de captación académica.
+
+6. ENGAGEMENT RATE (TASA DE INTERACCIÓN) POR RED SOCIAL
+   
+Este es el indicador más relevante para medir la calidad del contenido frente al tamaño de la audiencia. La fórmula base es:
+
+   → Engagement Rate (ER) = (Total de interacciones / Total de seguidores) × 100
+
+   Sin embargo, cada plataforma tiene sus propias interacciones válidas:
+
+   ▸ FACEBOOK
+     Interacciones: Reacciones + Comentarios + Compartidos
+     ER = (Reacciones + Comentarios + Compartidos) / Seguidores × 100
+     Benchmark referencial 2025: ~0.15% (contenido orgánico de marcas)
+
+   ▸ INSTAGRAM
+     Interacciones: Me gusta + Comentarios + Guardados + Compartidos
+     ER = (Me gusta + Comentarios + Guardados + Compartidos) / Seguidores × 100
+     Benchmark referencial 2025: ~0.45% (contenido orgánico de marcas)
+    
+   ▸ TIKTOK
+     Interacciones: Me gusta + Comentarios + Compartidos + Guardados
+     ER = (Me gusta + Comentarios + Compartidos + Guardados) / Seguidores × 100
+     Benchmark referencial 2025: ~2.5% – 4.5% (uno de los más altos del mercado)
+
+   ▸ YOUTUBE
+     Interacciones: Me gusta + Comentarios + Compartidos
+     ER = (Me gusta + Comentarios + Compartidos) / Vistas totales × 100
+     Nota: En YouTube se suele calcular sobre vistas (no seguidores), dado que el algoritmo prioriza el descubrimiento de contenido.
+     Benchmark referencial: ~1% – 4% sobre vistas.
+
+   ▸ LINKEDIN
+     Interacciones: Reacciones + Comentarios + Compartidos + Clics en contenido
+     ER = (Reacciones + Comentarios + Compartidos) / Seguidores × 100
+     Benchmark referencial 2025: ~2.8% – 6.5% (la plataforma con mayor ER del mercado)
+
+   ▸ X (TWITTER)
+     Interacciones: Me gusta + Retweets + Respuestas + Clics en enlace
+     ER = (Me gusta + Retweets + Respuestas) / Seguidores × 100
+     Benchmark referencial 2025: ~0.12% – 1.6%
+     Nota: X es históricamente la plataforma con menor tasa de engagement orgánico.
+
+──────────────────────────────────────
+PRÓXIMOS PASOS Y CRONOGRAMA
+──────────────────────────────────────
+
+• Revisión de avances: martes 22 de abril.
+• Actualización semanal del tablero: a partir del mes de mayo.
+• Frecuencia de reporte: semanal, consolidando métricas de las seis plataformas institucionales.

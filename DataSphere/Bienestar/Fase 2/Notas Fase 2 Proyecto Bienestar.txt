@@ -1,0 +1,5 @@
+1- se puede hacer analítica de perfiles de gustos y tendencias del estudiante, por medio de los históricos del formulario de admisión
+2-candiadatos -099  descargar y cruzar con la base de datos de actividades , para detectar patrones de gustos y tendencia
+3- hacer el cruce de los estudiantes que no participaron y ver que gustos tienen y sacar analítica
+4- base de datos de consulta psicosocial y salud , para capturar datos de estudiantes 
+5-
