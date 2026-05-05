@@ -26,6 +26,20 @@ SQL VIEW Acceso torniquetes
 6- FILTER CONTEO DISTINTIVO( SE FILTRA EL PUNTO 4 POR NO APROBADO)
 7- APROBADOS / CONTEO DISTINTIVO  ( PUNTO 4 / PUNTO 5)
 
+--------------------------------------------------------------------------------
+
+AJUSTES 04/05/2026
+1- Ajustar nombre de #paqutes eventos por "grupo ofertado"
+2- Estudiantes --cambiar estudiantes matriculados por unidad estudio
+3-Validar si son grupos ofertados , abiertos o cerrados  
+4-colocarle nombre  -Relación asistencia aprobación presencial 
+5- agregar tipologia de unidades de estudio ( transversales,nucleares)
+
+
+
+
+
+
 
 
 
