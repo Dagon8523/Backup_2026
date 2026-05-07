@@ -1,0 +1,3 @@
+1- del grafico de grupos étnicos quitar el 95 y el no aplica
+2- aumentar el tamaño de los habladores de los indicadores superiores 
+3-quitar decimales de los graficos de torta
