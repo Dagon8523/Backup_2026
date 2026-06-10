@@ -1,0 +1,6 @@
+cambiar clase de invalides por discapacidad
+colocar todos los filtros en el popup de inicio
+colocar los habladores de arriba con la cantidad de cada facultad
+colocar los habladores de cuantos nuevos y cauntos antiguos en condición de discapacidad
+quitar porcentaje de discapacidad 
+

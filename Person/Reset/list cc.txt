@@ -1,0 +1,225 @@
+
+https://www.fake-card-generator.com/es/bulk-generate-mastercards-cards.php
+
+[
+    {
+        "CreditCard": {
+            "IssuingNetwork": "Master Card",
+            "CardNumber": "5130680588041930",
+            "Name": "Gabriel Carter",
+            "Address": "River Street 126",
+            "Country": "Colombia",
+            "CVV": "484",
+            "Exp": "03/2031"
+        }
+    },
+    {
+        "CreditCard": {
+            "IssuingNetwork": "Master Card",
+            "CardNumber": "5509246688667405",
+            "Name": "Rogelio Lewis",
+            "Address": "Warren Avenue 83",
+            "Country": "Colombia",
+            "CVV": "274",
+            "Exp": "02/2027"
+        }
+    },
+    {
+        "CreditCard": {
+            "IssuingNetwork": "Master Card",
+            "CardNumber": "5431619362639952",
+            "Name": "Emmy Smith",
+            "Address": "Atlantic Avenue 103",
+            "Country": "Colombia",
+            "CVV": "740",
+            "Exp": "07/2022"
+        }
+    },
+    {
+        "CreditCard": {
+            "IssuingNetwork": "Master Card",
+            "CardNumber": "5556435039308999",
+            "Name": "Xzavier Scott",
+            "Address": "Route 30 44",
+            "Country": "Colombia",
+            "CVV": "425",
+            "Exp": "12/2025"
+        }
+    },
+    {
+        "CreditCard": {
+            "IssuingNetwork": "Master Card",
+            "CardNumber": "5544681418605753",
+            "Name": "Michael Gonzalez",
+            "Address": "Fairway Drive 124",
+            "Country": "Colombia",
+            "CVV": "194",
+            "Exp": "12/2030"
+        }
+    },
+    {
+        "CreditCard": {
+            "IssuingNetwork": "Master Card",
+            "CardNumber": "5597298529957456",
+            "Name": "Chloe Martinez",
+            "Address": "Heather Lane 15",
+            "Country": "Colombia",
+            "CVV": "579",
+            "Exp": "06/2025"
+        }
+    },
+    {
+        "CreditCard": {
+            "IssuingNetwork": "Master Card",
+            "CardNumber": "5339024499976240",
+            "Name": "Madison Lee",
+            "Address": "Cedar Lane 10",
+            "Country": "Colombia",
+            "CVV": "390",
+            "Exp": "03/2031"
+        }
+    },
+    {
+        "CreditCard": {
+            "IssuingNetwork": "Master Card",
+            "CardNumber": "5151298310608647",
+            "Name": "Isabelle Thomas",
+            "Address": "Route 1 95",
+            "Country": "Colombia",
+            "CVV": "161",
+            "Exp": "10/2028"
+        }
+    },
+    {
+        "CreditCard": {
+            "IssuingNetwork": "Master Card",
+            "CardNumber": "5467681616901353",
+            "Name": "Holly Young",
+            "Address": "Briarwood Drive 58",
+            "Country": "Colombia",
+            "CVV": "908",
+            "Exp": "02/2031"
+        }
+    },
+    {
+        "CreditCard": {
+            "IssuingNetwork": "Master Card",
+            "CardNumber": "5101585035208286",
+            "Name": "Cesar Hernandez",
+            "Address": "Warren Avenue 36",
+            "Country": "Colombia",
+            "CVV": "341",
+            "Exp": "05/2026"
+        }
+    },
+    {
+        "CreditCard": {
+            "IssuingNetwork": "Master Card",
+            "CardNumber": "5534913093149043",
+            "Name": "Audrina Turner",
+            "Address": "Olive Street 43",
+            "Country": "Colombia",
+            "CVV": "800",
+            "Exp": "01/2031"
+        }
+    },
+    {
+        "CreditCard": {
+            "IssuingNetwork": "Master Card",
+            "CardNumber": "5154910808707601",
+            "Name": "Brenton Miller",
+            "Address": "Williams Street 48",
+            "Country": "Colombia",
+            "CVV": "393",
+            "Exp": "01/2031"
+        }
+    },
+    {
+        "CreditCard": {
+            "IssuingNetwork": "Master Card",
+            "CardNumber": "5439455328284647",
+            "Name": "Dixie White",
+            "Address": "Cedar Avenue 148",
+            "Country": "Colombia",
+            "CVV": "369",
+            "Exp": "10/2022"
+        }
+    },
+    {
+        "CreditCard": {
+            "IssuingNetwork": "Master Card",
+            "CardNumber": "5121622277651703",
+            "Name": "Glenn Robinson",
+            "Address": "Cedar Lane 114",
+            "Country": "Colombia",
+            "CVV": "268",
+            "Exp": "02/2025"
+        }
+    },
+    {
+        "CreditCard": {
+            "IssuingNetwork": "Master Card",
+            "CardNumber": "5229599338657039",
+            "Name": "Alivia Campbell",
+            "Address": "Summit Avenue 58",
+            "Country": "Colombia",
+            "CVV": "561",
+            "Exp": "08/2022"
+        }
+    },
+    {
+        "CreditCard": {
+            "IssuingNetwork": "Master Card",
+            "CardNumber": "5237537933277167",
+            "Name": "Grady Baker",
+            "Address": "Jefferson Avenue 11",
+            "Country": "Colombia",
+            "CVV": "459",
+            "Exp": "05/2028"
+        }
+    },
+    {
+        "CreditCard": {
+            "IssuingNetwork": "Master Card",
+            "CardNumber": "5291001862559072",
+            "Name": "Walker Taylor",
+            "Address": "Court Street 144",
+            "Country": "Colombia",
+            "CVV": "583",
+            "Exp": "05/2025"
+        }
+    },
+    {
+        "CreditCard": {
+            "IssuingNetwork": "Master Card",
+            "CardNumber": "5591166435981090",
+            "Name": "Amber Davis",
+            "Address": "Franklin Avenue 131",
+            "Country": "Colombia",
+            "CVV": "564",
+            "Exp": "10/2023"
+        }
+    },
+    {
+        "CreditCard": {
+            "IssuingNetwork": "Master Card",
+            "CardNumber": "5229854476808450",
+            "Name": "Alivia Carter",
+            "Address": "Main Street 60",
+            "Country": "Colombia",
+            "CVV": "549",
+            "Exp": "03/2028"
+        }
+    },
+    {
+        "CreditCard": {
+            "IssuingNetwork": "Master Card",
+            "CardNumber": "5344060398119535",
+            "Name": "Alyssa Hall",
+            "Address": "Willow Avenue 57",
+            "Country": "Colombia",
+            "CVV": "610",
+            "Exp": "01/2030"
+        }
+    }
+]
