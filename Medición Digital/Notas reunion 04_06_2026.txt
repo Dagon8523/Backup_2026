@@ -1,0 +1,5 @@
+1- dejar fijo los históricos de año a año , con la comparación
+2- agregar tortas de participacon con los kpis, 
+3- colocar una tabla con las redes y fragmentado por columnas con los kpis , mes a mes , agregar semaforización 
+4- YouTube solo tener en cuenta la carpeta de contenido
+5- cargar de linkelnd todas las pestañas 
